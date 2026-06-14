@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>大气污染防治法律法规与标准知识图谱构建系统大作业报告</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 18mm 16mm 18mm;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      color: #111;
+      background: #fff;
+      font-family: "SimSun", "Songti SC", "Microsoft YaHei", serif;
+      font-size: 10.6pt;
+      line-height: 1.72;
+      letter-spacing: 0;
+    }
+
+    .paper {
+      max-width: 210mm;
+      margin: 0 auto;
+    }
+
+    .journal-line {
+      display: flex;
+      justify-content: space-between;
+      border-bottom: 1px solid #111;
+      padding-bottom: 4px;
+      margin-bottom: 18px;
+      font-family: "Times New Roman", "SimSun", serif;
+      font-size: 10pt;
+    }
+
+    .title {
+      margin: 0 0 12px;
+      text-align: center;
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-size: 20pt;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .authors,
+    .affiliation {
+      margin: 3px 0;
+      text-align: center;
+      font-size: 10.5pt;
+    }
+
+    .abstract-block {
+      margin-top: 16px;
+      font-size: 10.2pt;
+      text-align: justify;
+    }
+
+    .label {
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-weight: 700;
+      margin-right: 6px;
+    }
+
+    .keywords {
+      margin: 8px 0 12px;
+    }
+
+    .body-columns {
+      column-count: 2;
+      column-gap: 8mm;
+      column-rule: 0 solid transparent;
+      text-align: justify;
+    }
+
+    h2 {
+      break-after: avoid;
+      margin: 13px 0 6px;
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-size: 12.2pt;
+      line-height: 1.35;
+    }
+
+    h3 {
+      break-after: avoid;
+      margin: 10px 0 5px;
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-size: 10.8pt;
+      line-height: 1.35;
+    }
+
+    p {
+      margin: 0 0 7px;
+      text-indent: 2em;
+    }
+
+    .no-indent {
+      text-indent: 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 8px 0 10px;
+      font-size: 9pt;
+      break-inside: avoid;
+    }
+
+    caption {
+      caption-side: top;
+      text-align: center;
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-size: 9.4pt;
+      margin-bottom: 4px;
+    }
+
+    th,
+    td {
+      border: 1px solid #333;
+      padding: 4px 5px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f0f0;
+      font-family: "SimHei", "Microsoft YaHei", sans-serif;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    .wide {
+      column-span: all;
+      break-inside: avoid;
+      margin: 12px 0;
+    }
+
+    figure {
+      margin: 10px 0;
+      break-inside: avoid;
+    }
+
+    figure img {
+      display: block;
+      width: 100%;
+      border: 1px solid #aaa;
+    }
+
+    figcaption {
+      margin-top: 4px;
+      text-align: center;
+      font-size: 9pt;
+    }
+
+    .references p {
+      padding-left: 2em;
+      text-indent: -2em;
+      line-height: 1.55;
+      margin-bottom: 4px;
+      word-break: break-all;
+    }
+
+    .footnote {
+      border-top: 1px solid #111;
+      margin-top: 12px;
+      padding-top: 6px;
+      font-size: 8.8pt;
+      line-height: 1.5;
+    }
+
+    .mono {
+      font-family: Consolas, "Microsoft YaHei", monospace;
+    }
+  </style>
+</head>
+<body>
+  <article class="paper">
+    <div class="journal-line">
+      <span>课程大作业报告</span>
+      <span>Knowledge Graph System Report</span>
+    </div>
+
+    <h1 class="title">大气污染防治法律法规与标准知识图谱构建系统</h1>
+    <p class="authors no-indent">成员1　成员2　成员3　成员4　成员5　成员6</p>
+    <p class="affiliation no-indent">（××大学 ××学院，×× 000000）</p>
+
+    <section class="abstract-block">
+      <p><span class="label">摘　要</span>大气污染防治涉及法律、行政法规、部门规章、国家标准、行业排放标准、污染物指标和企业监管措施等多源异构知识。传统文本检索方式难以直接展示“某项污染物由哪些标准控制”“某行业适用哪些排放限值”“排污许可如何关联标准和监测要求”等复杂关系。本文围绕“大气污染防治法律法规与标准知识图谱构建”课题，设计并实现了一个本地 Web 知识图谱系统。扩展版系统以《中华人民共和国大气污染防治法》《中华人民共和国环境保护法》《排污许可管理条例》以及 GB 3095、GB 13223、GB 13271、GB 37822 等标准为基础，进一步补充重点行业排放标准、政策指南、监测方法、排放环节和区域治理对象，形成 263 个实体节点和 679 条关系边。系统提供总览看板、图谱探索、法规标准库、污染物库、行业场景库、路径查询、数据质量和团队分工等页面，支持关键词检索、类型筛选、关系筛选、邻域分析、最短路径查询和 JSON/CSV 数据导出。实验展示表明，该系统能够把分散的法规标准文本组织为可交互的关系网络，为课程展示、法规条文关联检索和后续知识抽取扩展提供基础。</p>
+      <p class="keywords"><span class="label">关键词</span>大气污染防治；知识图谱；法律法规；排放标准；VOCs；排污许可</p>
+      <p><span class="label">Abstract</span>This project designs and implements a local web-based knowledge graph system for air pollution prevention laws, regulations and standards. The system models laws, regulations, standards, policies, pollutants, industries, processes, monitoring methods, regulatory measures, limit indicators and issuing agencies as entities, and organizes their semantic relations such as applicability, control target, monitoring support and legal basis. It supports dashboard analysis, graph exploration, document retrieval, pollutant and industry libraries, path query, data quality inspection and JSON/CSV export. The expanded prototype contains 263 entities and 679 relations, and can support course demonstration and regulation-standard association retrieval.</p>
+      <p class="keywords"><span class="label">Key words</span>air pollution prevention; knowledge graph; environmental law; emission standard; graph visualization</p>
+    </section>
+
+    <section class="body-columns">
+      <h2>1 引言</h2>
+      <p>大气污染治理是生态环境保护的重要内容。随着固定污染源排污许可、重点行业超低排放改造、挥发性有机物综合治理和重污染天气应急管控等制度持续推进，法规标准体系呈现出层级多、对象多、更新快和专业术语密集等特点。对于学习者或基层使用者而言，仅靠网页目录和 PDF 文本检索，很难迅速回答“某行业应执行哪项标准”“某污染物在环境质量评价和排放控制中分别由哪些文件规定”“排污许可与自行监测、限值指标之间如何衔接”等问题。</p>
+      <p>知识图谱以实体、关系和属性为基本组织单元，能够把分散文本中的概念、对象和依据转化为结构化网络。在环境治理场景中，知识图谱既可以表达法律法规之间的层级关系，也可以表达标准与行业、污染物、限值和监管措施之间的多跳关联。因此，本课题选择“大气污染防治法律法规与标准知识图谱构建”作为研究对象，围绕课程要求完成从资料收集、模式层设计、知识抽取、系统实现到结果展示的完整流程。</p>
+      <p>本项目的主要工作包括：第一，整理生态环境部、国务院、国家标准公开系统等公开资料，形成大气污染防治法规标准数据集；第二，设计适合课程展示的轻量级本体，定义多类实体和多类语义关系；第三，构建包含 263 个实体、679 条关系的扩展版知识图谱数据；第四，开发可直接运行的多页面 Web 系统，实现筛选、检索、节点详情、重点链路高亮、最短路径查询和数据导出；第五，按照参考论文格式完成系统报告，并给出六人团队分工。</p>
+      <p>与单纯的资料汇编相比，本文强调“结构化”和“可交互”。系统不仅展示法规标准名称，还把法规依据、适用行业、控制污染物、限值类型、监测支撑和发布机构联系起来，使用户能够从任意实体出发观察其上下游关系。</p>
+
+      <h2>2 数据来源与需求分析</h2>
+      <h3>2.1 数据来源</h3>
+      <p>系统数据主要来自生态环境部官网、国务院政策文件库、国家标准全文公开系统以及课程给定图片资料。为保证知识可追溯，每个核心法规或标准实体均保存名称、编号、年份、发布机关、摘要和来源链接。对于课题范围内没有展开到全文条文的标准，系统保留标准名称、适用行业和核心污染物等课程展示所需字段。</p>
+      <table>
+        <caption>表1　主要数据来源与抽取内容</caption>
+        <thead>
+          <tr><th>来源类别</th><th>代表文件</th><th>抽取内容</th><th>图谱作用</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>法律</td><td>环境保护法、大气污染防治法</td><td>法律名称、修订年份、主管制度、法律责任</td><td>构成上位依据和制度根节点</td></tr>
+          <tr><td>行政法规/规章</td><td>排污许可管理条例、生态环境标准管理办法</td><td>许可制度、标准管理、自行监测和执行报告要求</td><td>衔接法律与具体标准</td></tr>
+          <tr><td>环境质量标准</td><td>GB 3095-2026 环境空气质量标准</td><td>空气质量评价项目、环境质量限值、评价对象</td><td>支撑环境空气评价链路</td></tr>
+          <tr><td>污染物排放标准</td><td>GB 13223、GB 13271、GB 16297、GB 37822</td><td>适用行业、污染物项目、排放限值类型、监测要求</td><td>形成行业与污染物控制网络</td></tr>
+          <tr><td>课程材料</td><td>课题说明图、课堂展示图</td><td>系统主题、展示形式、参考界面风格</td><td>确定系统功能和报告重点</td></tr>
+        </tbody>
+      </table>
+
+      <h3>2.2 数据范围</h3>
+      <p>本系统围绕大气污染防治中的典型对象进行原型构建，重点覆盖三类问题：一是法律与制度，例如大气污染防治法、环境保护法和排污许可管理条例；二是标准与行业，例如火电厂、锅炉、涂料油墨胶粘剂、制药工业和饮食业；三是污染物与限值，例如颗粒物、二氧化硫、氮氧化物、VOCs、非甲烷总烃、臭气浓度和环境空气质量限值。该范围能够支撑课程展示中的主要问答，但没有试图覆盖全部地方标准和所有行业标准。</p>
+      <p>在数据组织上，系统将“文档级实体”和“概念级实体”共同建模。文档级实体指法律、法规和标准；概念级实体指污染物、行业、措施、限值和发布机构。二者结合后，图谱能够表现“文件—概念—业务场景”的知识链条。</p>
+
+      <h3>2.3 需求分析</h3>
+      <p>根据课题说明和课堂图片中展示的知识图谱效果，系统需求可分为功能需求、数据需求和展示需求三类。功能上需要支持图谱浏览、检索、筛选、详情查看和路径高亮；数据上需要保证实体分类清楚、关系语义明确、来源可追溯；展示上需要在课堂演示时直观呈现节点类型、关系名称和典型应用链路。</p>
+      <table>
+        <caption>表2　系统需求分解</caption>
+        <thead>
+          <tr><th>需求类型</th><th>具体需求</th><th>实现方式</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>图谱浏览</td><td>展示法规、标准、污染物、行业和监管措施之间的关联</td><td>SVG 力导向图，节点颜色区分类型，边标签展示关系</td></tr>
+          <tr><td>检索筛选</td><td>按关键词或实体类型查找知识</td><td>搜索框、复选框筛选、邻接节点保留策略</td></tr>
+          <tr><td>实体详情</td><td>查看实体属性、来源和关联关系列表</td><td>右侧详情面板展示年份、发布方、摘要和来源链接</td></tr>
+          <tr><td>场景链路</td><td>快速展示排污许可、VOCs、火电排放、环境空气等典型路径</td><td>预定义 route 数组，一键高亮对应节点和边</td></tr>
+          <tr><td>数据复用</td><td>便于后续扩充或迁移到图数据库</td><td>以 nodes/links 结构保存，支持 JSON 和 CSV 导出</td></tr>
+        </tbody>
+      </table>
+
+      <h2>3 知识图谱模式层设计</h2>
+      <h3>3.1 实体类型设计</h3>
+      <p>模式层是知识图谱构建的基础。结合课题规模和课程演示需求，系统没有构建过重的本体层，而是采用“轻量级领域本体”方法，将核心对象扩展为主题、法律、行政法规/规章、政策/指南、标准/规范、污染物/指标、行业/场景、监管措施、限值指标、发布/主管机构、监测方法、排放环节和区域等类型。每类实体均设置统一的基础属性，包括 id、label、type、year、issuer、summary 和 sourceUrl，其中 id 用于系统内部关联，label 用于界面展示，sourceUrl 用于追溯来源。</p>
+      <table>
+        <caption>表3　实体类型与属性说明</caption>
+        <thead>
+          <tr><th>实体类型</th><th>含义</th><th>主要属性</th><th>示例</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>主题</td><td>图谱中心概念</td><td>名称、说明</td><td>大气污染防治</td></tr>
+          <tr><td>法律</td><td>全国人大常委会制定或修订的基础法律</td><td>名称、修订年份、发布机关、来源</td><td>大气污染防治法</td></tr>
+          <tr><td>行政法规/规章</td><td>国务院或部门发布的制度性文件</td><td>名称、文号、年份、发布机关</td><td>排污许可管理条例</td></tr>
+          <tr><td>政策/指南</td><td>行动计划、技术指南和专项治理方案</td><td>名称、年份、发布方、治理方向</td><td>重点行业挥发性有机物综合治理方案</td></tr>
+          <tr><td>标准/规范</td><td>国家标准或生态环境技术规范</td><td>标准编号、年份、发布方、适用范围</td><td>GB 37822-2019</td></tr>
+          <tr><td>污染物/指标</td><td>被质量标准评价或排放标准控制的项目</td><td>名称、说明、相关标准</td><td>PM2.5、VOCs、SO2</td></tr>
+          <tr><td>行业/场景</td><td>标准适用的行业或排放场景</td><td>行业名称、治理重点</td><td>火电厂、锅炉、饮食业</td></tr>
+          <tr><td>监管措施</td><td>法律法规规定的管理工具</td><td>措施名称、功能说明</td><td>排污许可、自行监测</td></tr>
+          <tr><td>限值指标</td><td>标准中规定的控制指标类型</td><td>指标名称、评价含义</td><td>最高允许排放浓度</td></tr>
+          <tr><td>发布/主管机构</td><td>法律、法规或标准的发布机构</td><td>机构名称、职责说明</td><td>生态环境部</td></tr>
+          <tr><td>监测方法</td><td>固定源、环境空气和特征污染物监测技术方法</td><td>方法名称、适用对象</td><td>HJ 75 固定污染源烟气 CEMS 技术规范</td></tr>
+          <tr><td>排放环节</td><td>污染物产生或排放的工艺环节</td><td>环节名称、排放特征</td><td>燃烧排放、物料储存、设备泄漏</td></tr>
+          <tr><td>区域</td><td>地方治理、属地监管和联防联控空间对象</td><td>区域名称、治理说明</td><td>北京、河北、广东</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.2 关系类型设计</h3>
+      <p>关系设计遵循“可解释、可检索、可展示”的原则。为了避免图谱关系过于零散，系统将语义相近的关系进行归并，例如将“制定”“修订”统一到“制定/修订”，将多种污染物约束统一到“控制”，将标准中的浓度、速率、厂界等要求统一关联到“规定”。这种处理牺牲了部分细节，但提高了课程展示时的可读性。</p>
+      <table>
+        <caption>表4　关系类型模板</caption>
+        <thead>
+          <tr><th>关系类型</th><th>头实体类型</th><th>尾实体类型</th><th>三元组示例</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>核心法律/基础法律</td><td>主题</td><td>法律</td><td>大气污染防治—核心法律—大气污染防治法</td></tr>
+          <tr><td>配套制度</td><td>法律</td><td>行政法规/规章</td><td>大气污染防治法—配套制度—排污许可管理条例</td></tr>
+          <tr><td>适用于</td><td>标准/规范</td><td>行业/场景</td><td>GB 13223-2011—适用于—火电厂</td></tr>
+          <tr><td>控制</td><td>标准/规范</td><td>污染物/指标</td><td>GB 37822-2019—控制—挥发性有机物</td></tr>
+          <tr><td>规定</td><td>标准/规范</td><td>限值指标</td><td>GB 16297-1996—规定—最高允许排放速率</td></tr>
+          <tr><td>要求</td><td>行政法规/规章</td><td>监管措施</td><td>排污许可管理条例—要求—自行监测</td></tr>
+          <tr><td>发布/组织制定</td><td>发布/主管机构</td><td>法律或标准</td><td>生态环境部—组织制定—GB 37822-2019</td></tr>
+          <tr><td>前体物</td><td>污染物/指标</td><td>污染物/指标</td><td>挥发性有机物—前体物—臭氧</td></tr>
+        </tbody>
+      </table>
+
+      <h3>3.3 数据质量控制</h3>
+      <p>为减少课程项目中常见的名称混乱问题，系统在建图前进行实体归一化处理：标准名称统一保留标准编号和中文题名；污染物名称在摘要中保留中英文或化学式写法，但节点标签使用中文常用名；机构名称使用正式全称；行业场景尽量采用标准题名中的行业名称。对于来源不完全一致的文件，以生态环境部或国家标准公开系统页面为优先参考。</p>
+
+      <h2>4 知识抽取与图谱构建方法</h2>
+      <h3>4.1 构建流程</h3>
+      <p>本项目采用半自动构建流程，具体包括资料采集、字段整理、实体识别、关系抽取、实体归并、人工校核和前端入库七个步骤。考虑到课程时间和数据规模，系统没有使用复杂的深度学习抽取模型，而是采用规则模板与人工核验结合的方法，保证结果的准确性和可解释性。</p>
+      <table>
+        <caption>表5　知识图谱构建流程</caption>
+        <thead>
+          <tr><th>步骤</th><th>处理内容</th><th>输出结果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>资料采集</td><td>收集法律、法规、国家标准和课程图片</td><td>原始资料清单</td></tr>
+          <tr><td>字段整理</td><td>记录标题、编号、年份、发布机关、链接和摘要</td><td>法规标准基础表</td></tr>
+          <tr><td>实体识别</td><td>识别污染物、行业、限值、措施和机构</td><td>候选实体列表</td></tr>
+          <tr><td>关系抽取</td><td>按照“适用于、控制、规定、发布”等模板生成三元组</td><td>候选关系列表</td></tr>
+          <tr><td>实体归并</td><td>处理同义词、简称和化学式表达</td><td>规范实体字典</td></tr>
+          <tr><td>人工校核</td><td>检查关系方向、重复节点和来源字段</td><td>可用图谱数据</td></tr>
+          <tr><td>前端入库</td><td>写入 graph-data.js 并在系统中渲染</td><td>可交互知识图谱</td></tr>
+        </tbody>
+      </table>
+
+      <h3>4.2 抽取规则</h3>
+      <p>对于标准类文件，抽取优先关注标准题名中的行业对象和污染物对象。例如“火电厂大气污染物排放标准”可抽取行业实体“火电厂”，并结合标准摘要抽取“颗粒物、二氧化硫、氮氧化物、汞及其化合物”等污染物；“挥发性有机物无组织排放控制标准”可抽取污染物“挥发性有机物”和监管措施“无组织排放管控”。对于法律法规类文件，抽取重点放在制度工具上，如排污许可、自行监测、总量控制、区域联防联控和重污染天气应急。</p>
+      <p>关系方向采用从“依据或文件”指向“对象或要求”的方式。例如标准指向行业表示标准适用对象，标准指向污染物表示控制对象，法规指向监管措施表示制度要求。发布机构关系则从机构指向文件，便于在图中观察某机构发布或组织制定的文件集合。</p>
+
+      <h3>4.3 图谱存储结构</h3>
+      <p>知识图谱数据以 JavaScript 对象保存，包含 <span class="mono">metadata</span>、<span class="mono">types</span>、<span class="mono">nodes</span>、<span class="mono">links</span> 和 <span class="mono">routes</span> 五个部分。<span class="mono">nodes</span> 数组保存实体属性，<span class="mono">links</span> 数组保存实体之间的 source、target 和 relation，<span class="mono">routes</span> 保存课堂展示常用的重点链路。该结构不依赖后端服务，适合课程项目快速部署；后续如需扩展，可以将 <span class="mono">nodes</span> 映射为图数据库节点，将 <span class="mono">links</span> 映射为图数据库边。</p>
+      <p>为了支持邻接查询，系统在页面加载时构建 adjacency 映射表，使任意节点都能快速找到相邻节点及关系方向。这一结构用于节点详情面板、选中节点高亮和检索结果扩展。</p>
+
+      <h2>5 系统设计与实现</h2>
+      <h3>5.1 系统架构</h3>
+      <p>系统采用本地静态 Web 架构，由数据层、逻辑层和展示层组成。数据层负责存储实体、关系、类型和典型链路；逻辑层负责图数据过滤、布局迭代、交互状态维护和导出；展示层负责页面结构、视觉样式和响应式布局。系统无需数据库和服务器即可运行，降低了课程演示部署成本。</p>
+      <table>
+        <caption>表6　系统模块设计</caption>
+        <thead>
+          <tr><th>模块</th><th>文件</th><th>主要功能</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>页面入口</td><td>index.html</td><td>定义总览看板、图谱探索、法规标准库、污染物库、行业场景、路径查询、数据质量和团队分工页面</td></tr>
+          <tr><td>基础数据</td><td>assets/graph-data.js</td><td>保存初始实体、关系、类型颜色和重点链路</td></tr>
+          <tr><td>扩展数据</td><td>assets/expanded-data.js</td><td>补充政策、行业标准、污染物、监测方法、排放环节和区域节点</td></tr>
+          <tr><td>交互逻辑</td><td>assets/app-v2.js</td><td>实现多页面导航、检索筛选、图谱布局、节点详情、路径查询和数据导出</td></tr>
+          <tr><td>界面样式</td><td>assets/styles.css</td><td>实现三栏布局、节点配色、面板样式和响应式适配</td></tr>
+          <tr><td>报告材料</td><td>reports/、screenshots/</td><td>保存课程报告、PDF 输出和系统运行截图</td></tr>
+        </tbody>
+      </table>
+
+      <h3>5.2 可视化布局</h3>
+      <p>系统使用 SVG 绘制力导向图。节点颜色对应实体类型，节点半径根据实体重要性设置，主题、法律和标准节点相对更大；边以灰色线条表示，选中节点或重点链路时边颜色加深。为了改善全量图展示效果，布局中设置类型分区引力：法律和规章靠右上，标准和限值靠下方，污染物靠左下，行业场景靠左侧，监管措施靠上方，发布机构靠右侧。这样既保留关系牵引，又能降低节点重叠。</p>
+      <p>布局迭代主要由三类力组成：一是边的弹簧力，使有关联的节点保持适当距离；二是节点间斥力，减少节点和文本重叠；三是类型锚点引力，使同类节点分布在相对稳定区域。用户可以拖拽节点、缩放图谱、平移画布，也可以暂停布局以便课堂讲解。</p>
+
+      <h3>5.3 检索与筛选</h3>
+      <p>关键词检索会匹配节点名称、编号、摘要、年份和发布方。为了避免检索结果只剩孤立节点，系统采用“命中节点加邻接节点”的展示策略：当某节点命中关键词时，其直接相邻节点也会保留在图中，帮助用户看到上下文。例如检索“VOCs”时，系统不仅显示挥发性有机物节点，也会显示 GB 37822-2019、无组织排放管控、涂料油墨胶粘剂等相关节点。</p>
+      <p>类型筛选通过左侧复选框实现。用户可以只保留标准和污染物，也可以隐藏发布机构或限值指标，以获得不同粒度的图谱视图。扩展版系统进一步增加关系类型筛选和 1/2 跳邻域查看，使用户可以从某一法规、标准、行业或污染物出发观察局部网络。筛选状态与检索状态共同作用，最终生成可见节点集合和可见边集合。</p>
+
+      <h3>5.4 节点详情与重点链路</h3>
+      <p>点击图中节点后，右侧面板展示实体标题、类型标签、编号、年份、发布方、来源链接、摘要和关联关系列表。关联关系列表采用“当前实体—关系—相邻实体”的表达方式，使用户不用阅读整张图也能理解该实体的上下游语义。</p>
+      <p>重点链路是为课堂汇报设计的场景化功能。系统预设排污许可、VOCs 管控、火电排放、环境空气、钢铁超低排放、臭氧协同控制、在线监测和焚烧烟气八条链路。每条链路都由若干关键节点组成，点击按钮后系统只显示相关节点并高亮其边，从而把复杂全量图转化为便于讲解的小型子图。</p>
+
+      <div class="wide">
+        <figure>
+          <img src="../screenshots/expanded-graph.png" alt="扩展版系统图谱探索界面">
+          <figcaption>图1　扩展版系统图谱探索界面</figcaption>
+        </figure>
+      </div>
+
+      <h2>6 系统运行、测试与案例分析</h2>
+      <h3>6.1 运行环境</h3>
+      <p>系统为纯前端项目，可直接双击 <span class="mono">index.html</span> 打开，也可通过本地静态服务访问。在测试环境中，使用 <span class="mono">http://127.0.0.1:8000/index.html</span> 打开系统，浏览器能够正常加载全部数据和样式。扩展版系统当前包含 263 个实体节点、679 条关系边、67 个法规标准类节点、45 个污染物指标节点、38 个行业场景节点和 16 个监测方法节点。</p>
+      <table>
+        <caption>表7　图谱规模统计</caption>
+        <thead>
+          <tr><th>统计项</th><th>数量</th><th>说明</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>实体节点</td><td>263</td><td>覆盖法律、标准、政策、污染物、行业、措施、机构、监测方法、排放环节和区域等实体</td></tr>
+          <tr><td>关系边</td><td>679</td><td>覆盖核心法律、适用于、控制、规定、发布、要求、覆盖环节、监测支撑等关系</td></tr>
+          <tr><td>法规标准类节点</td><td>67</td><td>包括法律、行政法规/规章、政策指南和标准/规范</td></tr>
+          <tr><td>污染物指标节点</td><td>45</td><td>包括环境质量指标、固定源排放污染物、VOCs 组分、重金属和二次污染相关指标</td></tr>
+          <tr><td>重点链路</td><td>8</td><td>排污许可、VOCs 管控、火电排放、环境空气、钢铁超低排放、臭氧协同控制、在线监测、焚烧烟气</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.2 测试用例</h3>
+      <p>为了验证系统是否满足课程需求，项目组设计了若干典型测试用例。测试覆盖页面加载、关键词检索、类型筛选、节点详情、重点链路和数据导出等功能。测试结果显示，系统能够稳定完成预期操作，图谱统计数据与数据文件一致，浏览器控制台无明显错误。</p>
+      <table>
+        <caption>表8　系统功能测试用例</caption>
+        <thead>
+          <tr><th>编号</th><th>测试内容</th><th>预期结果</th><th>结果</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>T1</td><td>打开系统首页</td><td>显示标题、统计卡片、筛选栏、图谱画布和详情栏</td><td>通过</td></tr>
+          <tr><td>T2</td><td>输入关键词“VOCs”</td><td>显示 VOCs 相关标准、污染物、行业和措施节点</td><td>通过</td></tr>
+          <tr><td>T3</td><td>点击“火电排放”链路</td><td>高亮火电厂、GB 13223、颗粒物、SO2、NOx 等节点</td><td>通过</td></tr>
+          <tr><td>T4</td><td>取消某类实体复选框</td><td>对应类型节点从图中隐藏，统计状态更新</td><td>通过</td></tr>
+          <tr><td>T5</td><td>点击法规或标准节点</td><td>右侧展示摘要、年份、发布方、来源和关联关系</td><td>通过</td></tr>
+          <tr><td>T6</td><td>使用路径查询页面</td><td>能够展示两个实体之间的最短关系路径，并可跳转到图谱查看</td><td>通过</td></tr>
+          <tr><td>T7</td><td>点击“导出 JSON/CSV”</td><td>下载当前知识图谱数据文件和表格数据</td><td>通过</td></tr>
+        </tbody>
+      </table>
+
+      <h3>6.3 案例一：VOCs 管控链路</h3>
+      <p>以“VOCs 管控”链路为例，系统将“大气污染防治—大气污染防治法—GB 37822-2019—挥发性有机物/非甲烷总烃—无组织排放管控—涂料油墨胶粘剂”串联起来，展示从法律依据、标准规范、污染物项目到行业治理场景的多跳关系。该链路说明 VOCs 治理不是孤立的指标控制，而是由法律、标准和企业过程控制共同组成。</p>
+
+      <div class="wide">
+        <figure>
+          <img src="../screenshots/expanded-paths.png" alt="路径查询功能界面">
+          <figcaption>图2　路径查询功能界面</figcaption>
+        </figure>
+      </div>
+
+      <h3>6.4 案例二：火电排放链路</h3>
+      <p>以“火电排放”链路为例，系统能够定位火电厂适用的 GB 13223-2011，并关联颗粒物、二氧化硫、氮氧化物和汞及其化合物等重点控制项目。该链路可用于说明行业标准如何把行业对象和污染物指标联系起来，也能作为扩展钢铁、水泥、焦化等行业标准的模板。</p>
+      <p>以“排污许可”链路为例，系统展示排污许可管理条例、排污许可证、自行监测和排放标准之间的关系。该链路体现了制度管理的闭环：法规提出许可管理要求，许可证载明排放限值和监测要求，企业通过自行监测和执行报告接受监管。</p>
+
+      <h2>7 六人分工与项目管理</h2>
+      <p>为适应课程大作业的团队协作要求，本项目将工作拆分为项目统筹、数据采集、知识建模、系统开发、测试分析和文档答辩六个岗位。六个岗位之间既相互独立，又存在交叉校验关系：数据组提供原始资料，建模组将资料转化为实体关系，开发组将图谱落地为系统，测试组验证功能和案例，文档组将全过程写入报告，项目负责人负责范围控制和最终一致性检查。实际提交前可将成员1至成员6替换为真实姓名和学号。</p>
+
+      <div class="wide">
+        <table>
+          <caption>表9　小组成员任务分解与验收标准</caption>
+          <thead>
+            <tr><th>成员</th><th>岗位</th><th>详细任务</th><th>对应成果</th><th>验收标准</th><th>建议占比</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>成员1</td>
+              <td>项目负责人 / 总体设计</td>
+              <td>确定课题范围和系统目标；设计整体技术路线；拆分任务并安排进度；检查各成员成果是否与课题一致；统一系统命名、报告结构和答辩逻辑；最终汇总修改报告。</td>
+              <td>项目方案、任务计划、系统总体架构说明、最终统稿版本。</td>
+              <td>系统主题明确，报告章节完整，数据、系统和截图能够相互对应。</td>
+              <td>17%</td>
+            </tr>
+            <tr>
+              <td>成员2</td>
+              <td>法规标准数据采集</td>
+              <td>检索并整理生态环境部、国务院、国家标准公开系统中的公开资料；记录法律法规和标准的名称、编号、年份、发布机关、来源链接；初步筛选与大气污染防治相关的核心文件。</td>
+              <td>法规标准资料清单、来源链接表、核心文件摘要。</td>
+              <td>来源权威可追溯，字段完整，能支撑后续实体抽取。</td>
+              <td>16%</td>
+            </tr>
+            <tr>
+              <td>成员3</td>
+              <td>知识抽取与模式层建模</td>
+              <td>设计实体类型、属性字段和关系模板；从标准题名和摘要中抽取行业、污染物、限值和监管措施；完成同义词归并，如 VOCs 与挥发性有机物、SO2 与二氧化硫的对应说明；检查三元组方向。</td>
+              <td>实体类型表、关系模板表、三元组数据、实体归一化说明。</td>
+              <td>实体分类清楚，关系语义准确，能够形成可展示的知识图谱。</td>
+              <td>17%</td>
+            </tr>
+            <tr>
+              <td>成员4</td>
+              <td>前端系统开发</td>
+              <td>搭建 Web 页面结构；实现 SVG 图谱渲染、力导向布局、节点拖拽、缩放和平移；实现关键词检索、类型筛选、关系筛选、节点详情、路径查询、重点链路高亮和 JSON/CSV 导出；整理代码文件结构。</td>
+              <td>index.html、assets/app-v2.js、assets/styles.css、assets/graph-data.js、assets/expanded-data.js。</td>
+              <td>系统可直接运行，主要交互功能可用，页面无明显布局错误。</td>
+              <td>18%</td>
+            </tr>
+            <tr>
+              <td>成员5</td>
+              <td>系统测试与案例分析</td>
+              <td>设计功能测试用例；验证页面加载、检索、筛选、详情、重点链路、路径查询和导出功能；记录系统统计数据；截取总览、图谱、标准库、路径查询等页面；分析 VOCs 管控、火电排放、排污许可等案例。</td>
+              <td>测试用例表、测试结果、系统截图、案例分析文字。</td>
+              <td>测试覆盖主要功能，截图清晰，案例能够体现知识图谱价值。</td>
+              <td>16%</td>
+            </tr>
+            <tr>
+              <td>成员6</td>
+              <td>报告排版与答辩准备</td>
+              <td>参考给定 PDF 的论文式格式，整理摘要、关键词、正文、图表、参考文献和六人分工；统一图表编号和文字表述；准备答辩讲解顺序、演示重点和可能问题回答。</td>
+              <td>HTML 报告、PDF 报告、答辩提纲、展示说明。</td>
+              <td>报告格式规范，内容详实，分工清楚，能够支撑课堂汇报。</td>
+              <td>16%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>除上述主责外，小组成员还设置了交叉检查机制。成员2完成的数据清单由成员3检查是否能转化为实体关系；成员3完成的三元组由成员4检查是否能被系统正确读取；成员4完成的系统由成员5按测试用例验证；成员6整理报告后由成员1统一检查术语、图表编号和文件路径。通过这种方式，每个任务都有明确负责人，也有至少一名成员参与复核。</p>
+
+      <div class="wide">
+        <table>
+          <caption>表10　项目阶段分工与阶段成果</caption>
+          <thead>
+            <tr><th>阶段</th><th>时间安排</th><th>主要工作</th><th>主责成员</th><th>参与成员</th><th>阶段成果</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>第一阶段：选题与需求分析</td><td>前期</td><td>理解课题图片要求，确定系统主题、功能边界、展示形式和报告格式。</td><td>成员1</td><td>全体成员</td><td>课题方案、功能需求列表</td></tr>
+            <tr><td>第二阶段：资料收集与数据整理</td><td>前期至中期</td><td>收集法律法规、行政法规、国家标准和课程参考资料，整理来源链接与基础字段。</td><td>成员2</td><td>成员1、成员3</td><td>法规标准数据清单、来源核验表</td></tr>
+            <tr><td>第三阶段：知识建模与三元组构建</td><td>中期</td><td>定义实体类型和关系类型，抽取污染物、行业、限值、措施和机构，完成实体归并。</td><td>成员3</td><td>成员2、成员4</td><td>模式层设计、三元组数据</td></tr>
+            <tr><td>第四阶段：系统开发与功能实现</td><td>中期至后期</td><td>实现前端界面、图谱渲染、搜索筛选、详情面板、重点链路和导出功能。</td><td>成员4</td><td>成员1、成员3</td><td>可运行 Web 系统</td></tr>
+            <tr><td>第五阶段：测试与案例整理</td><td>后期</td><td>验证系统功能，记录测试结果，截取系统图片，整理 VOCs、火电、排污许可案例。</td><td>成员5</td><td>成员4、成员6</td><td>测试用例、截图、案例分析</td></tr>
+            <tr><td>第六阶段：报告与答辩准备</td><td>提交前</td><td>完成报告撰写、图表排版、参考文献整理和答辩讲解顺序设计。</td><td>成员6</td><td>成员1、全体成员</td><td>最终 PDF 报告、答辩提纲</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>从成果归属看，成员1主要对应报告中的引言、总体设计和总结部分；成员2主要对应数据来源与需求分析部分；成员3主要对应模式层设计和知识抽取方法部分；成员4主要对应系统设计与实现部分；成员5主要对应系统运行、测试与案例分析部分；成员6主要对应报告排版、参考文献、答辩材料和最终提交文件。这样的写法可以在报告中直接体现六个人各自完成了什么，也便于教师根据成果检查分工是否真实、具体。</p>
+
+      <h2>8 特色、问题与展望</h2>
+      <h3>8.1 系统特色</h3>
+      <p>本系统的特色主要体现在三个方面。第一，主题聚焦，围绕大气污染防治法律法规和标准体系展开，数据对象与课题要求一致；第二，关系清晰，通过“标准—行业—污染物—限值—监管措施”的结构展示复杂法规知识；第三，系统轻量，使用本地静态网页即可运行，便于课堂演示和提交。</p>
+      <h3>8.2 存在问题</h3>
+      <p>受课程时间限制，当前系统仍以人工整理和半自动抽取为主，尚未覆盖全部地方标准和所有行业排放标准。部分标准只抽取了标题级和摘要级知识，没有展开到具体条文和数值限值。系统也暂未接入图数据库，因此复杂路径查询、统计分析和权限管理能力有限。</p>
+      <h3>8.3 后续展望</h3>
+      <p>后续可以从三个方向扩展：第一，引入 OCR、命名实体识别和关系抽取模型，提高法规标准批量处理能力；第二，接入 Neo4j 或 RDF 三元组库，实现 Cypher/SPARQL 查询和图算法分析；第三，增加条文级证据定位和限值数值结构化，使系统能够回答“某行业某污染物限值是多少”“某标准第几条规定了监测要求”等更精确的问题。</p>
+
+      <h2>9 总结</h2>
+      <p>本文完成了大气污染防治法律法规与标准知识图谱系统的设计与实现。系统把分散在法律、行政法规和国家标准中的关键知识组织为实体关系网络，并提供检索、筛选、详情查看、重点链路高亮和数据导出功能。实验和案例展示表明，该系统能够直观呈现法规标准之间的关联关系，适合用于课程汇报、知识图谱学习和环保法规标准的结构化梳理。</p>
+      <p>从课程实践角度看，本项目覆盖了知识图谱构建的主要步骤：需求分析、数据收集、模式设计、知识抽取、图谱存储、可视化实现和报告撰写。六人分工也对应了真实项目中的不同角色，为后续开展更大规模的环境领域知识图谱建设提供了可复用经验。</p>
+
+      <h2>参考文献</h2>
+      <div class="references">
+        <p>[1] 全国人民代表大会常务委员会. 中华人民共和国大气污染防治法[EB/OL]. https://www.mee.gov.cn/ywgz/fgbz/fl/201811/t20181113_673567.shtml.</p>
+        <p>[2] 全国人民代表大会常务委员会. 中华人民共和国环境保护法[EB/OL]. https://www.mee.gov.cn/ywgz/fgbz/fl/201605/t20160522_343393.shtml.</p>
+        <p>[3] 国务院. 排污许可管理条例[EB/OL]. https://www.gov.cn/zhengce/content/2021-01/29/content_5583524.htm.</p>
+        <p>[4] 生态环境部. 生态环境标准管理办法[EB/OL]. https://www.mee.gov.cn/xxgk2018/xxgk/xxgk02/202012/t20201221_813087.html.</p>
+        <p>[5] 国家市场监督管理总局, 国家标准化管理委员会. GB 3095-2026 环境空气质量标准[S/OL]. 国家标准全文公开系统.</p>
+        <p>[6] 生态环境部. GB 13223-2011 火电厂大气污染物排放标准[S/OL]. https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/201109/t20110921_217534.shtml.</p>
+        <p>[7] 生态环境部. GB 13271-2014 锅炉大气污染物排放标准[S/OL]. https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/.</p>
+        <p>[8] 生态环境部. GB 37822-2019 挥发性有机物无组织排放控制标准[S/OL]. https://www.mee.gov.cn/ywgz/fgbz/bz/bzwb/dqhjbh/dqgdwrywrwpfbz/201906/t20190606_705905.shtml.</p>
+        <p>[9] 王鑫, 陈蔚雪, 杨雅君, 张小旺, 冯志勇. 知识图谱划分算法研究综述[J]. 计算机学报, 2020.</p>
+        <p>[10] Hogan A, Blomqvist E, Cochez M, et al. Knowledge Graphs[J]. ACM Computing Surveys, 2021, 54(4): 1-37.</p>
+      </div>
+    </section>
+  </article>
+</body>
+</html>

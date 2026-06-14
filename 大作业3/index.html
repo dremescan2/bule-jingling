@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>大气污染防治法规与标准知识图谱系统</title>
+  <link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div class="brand">
+        <p class="eyebrow">课程大作业 · 扩展版系统</p>
+        <h1>大气污染防治法律法规与标准知识图谱</h1>
+        <p class="subtitle">法规标准库、污染物库、行业场景、路径查询、数据质量与图谱探索</p>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="fitGraph" title="重置图谱视图" aria-label="重置图谱视图"><span class="icon">↺</span></button>
+        <button class="icon-button" id="togglePhysics" title="暂停或恢复布局" aria-label="暂停或恢复布局"><span class="icon">Ⅱ</span></button>
+        <button class="text-button" id="exportData">导出 JSON</button>
+        <button class="text-button" id="exportCsv">导出 CSV</button>
+      </div>
+    </header>
+
+    <nav class="page-nav" aria-label="系统页面导航">
+      <button class="active" data-page="dashboard">总览看板</button>
+      <button data-page="graph">图谱探索</button>
+      <button data-page="documents">法规标准库</button>
+      <button data-page="pollutants">污染物库</button>
+      <button data-page="industries">行业场景</button>
+      <button data-page="paths">路径查询</button>
+      <button data-page="quality">数据质量</button>
+    </nav>
+
+    <section class="metrics" aria-label="知识图谱统计">
+      <div class="metric"><span id="metricNodes">0</span><small>实体节点</small></div>
+      <div class="metric"><span id="metricLinks">0</span><small>关系边</small></div>
+      <div class="metric"><span id="metricDocs">0</span><small>法规标准</small></div>
+      <div class="metric"><span id="metricPollutants">0</span><small>污染物指标</small></div>
+      <div class="metric"><span id="metricIndustries">0</span><small>行业场景</small></div>
+      <div class="metric"><span id="metricMethods">0</span><small>监测方法</small></div>
+    </section>
+
+    <main class="page-host">
+      <section class="page active" id="page-dashboard">
+        <div class="dashboard-grid">
+          <section class="panel span-2">
+            <div class="section-head">
+              <div>
+                <h2>知识图谱总览</h2>
+                <p>从法规、标准、行业、污染物和监管措施五条线观察数据。</p>
+              </div>
+              <button class="text-button small" data-jump-page="graph">进入图谱</button>
+            </div>
+            <div id="typeChart" class="bar-list"></div>
+          </section>
+          <section class="panel">
+            <h2>高连接实体</h2>
+            <div id="topEntities" class="rank-list"></div>
+          </section>
+          <section class="panel">
+            <h2>关系类型</h2>
+            <div id="relationChart" class="relation-list"></div>
+          </section>
+          <section class="panel span-3">
+            <div class="section-head">
+              <div>
+                <h2>重点业务链路</h2>
+                <p>适合课堂演示的法规标准多跳关系。</p>
+              </div>
+            </div>
+            <div id="routeCards" class="route-card-grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-graph">
+        <div class="workspace">
+          <aside class="side-panel controls-panel" aria-label="筛选面板">
+            <label class="search-box">
+              <span>检索</span>
+              <input id="searchInput" type="search" placeholder="输入法规、标准、污染物、行业或措施">
+            </label>
+
+            <div class="panel-block">
+              <h2>实体类型</h2>
+              <div id="typeFilters" class="check-list"></div>
+            </div>
+
+            <div class="panel-block">
+              <h2>关系筛选</h2>
+              <select id="relationFilter" class="select-input"></select>
+            </div>
+
+            <div class="panel-block">
+              <h2>邻域深度</h2>
+              <div class="segmented" id="depthControl">
+                <button data-depth="0" class="active">全图</button>
+                <button data-depth="1">1 跳</button>
+                <button data-depth="2">2 跳</button>
+              </div>
+            </div>
+
+            <div class="panel-block">
+              <h2>重点链路</h2>
+              <div id="routeButtons" class="route-buttons"></div>
+            </div>
+
+            <div class="panel-block">
+              <h2>检索结果</h2>
+              <div id="searchResults" class="mini-list"></div>
+            </div>
+
+            <div class="panel-block">
+              <h2>图例</h2>
+              <div id="legend" class="legend"></div>
+            </div>
+          </aside>
+
+          <section class="graph-panel" aria-label="知识图谱画布">
+            <div class="graph-toolbar">
+              <div id="statusText">全部实体</div>
+              <div class="toolbar-group">
+                <label class="scale-hint"><span>标签</span><input id="labelToggle" type="checkbox"></label>
+                <label class="scale-hint"><span>缩放</span><input id="zoomRange" type="range" min="45" max="180" value="100"></label>
+              </div>
+            </div>
+            <svg id="graphSvg" role="img" aria-label="大气污染防治知识图谱"></svg>
+          </section>
+
+          <aside class="side-panel detail-panel" aria-label="实体详情">
+            <div id="detailContent" class="detail-content">
+              <p class="empty-title">未选中实体</p>
+              <p class="empty-copy">从左侧检索或在图中选择节点。</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="page" id="page-documents">
+        <div class="page-layout">
+          <section class="panel">
+            <h2>法规标准检索</h2>
+            <label class="search-box compact"><span>关键词</span><input id="docSearch" type="search" placeholder="标准编号、法规名称、污染物或行业"></label>
+            <label class="search-box compact"><span>文件类型</span><select id="docTypeFilter" class="select-input"></select></label>
+            <label class="search-box compact"><span>年份</span><select id="docYearFilter" class="select-input"></select></label>
+          </section>
+          <section class="panel span-2">
+            <div class="section-head">
+              <div><h2>法规标准库</h2><p id="docCountText">0 条记录</p></div>
+            </div>
+            <div class="table-wrap">
+              <table class="data-table">
+                <thead><tr><th>名称</th><th>类型</th><th>编号/年份</th><th>发布方</th><th>关联概况</th><th>操作</th></tr></thead>
+                <tbody id="documentsTable"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-pollutants">
+        <div class="page-layout">
+          <section class="panel">
+            <h2>污染物筛选</h2>
+            <label class="search-box compact"><span>关键词</span><input id="pollutantSearch" type="search" placeholder="PM2.5、VOCs、二氧化硫"></label>
+            <div id="pollutantStats" class="stat-list"></div>
+          </section>
+          <section class="panel span-2">
+            <div class="section-head">
+              <div><h2>污染物知识库</h2><p>查看污染物关联的标准、行业和措施。</p></div>
+            </div>
+            <div id="pollutantCards" class="card-grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-industries">
+        <div class="page-layout">
+          <section class="panel">
+            <h2>行业筛选</h2>
+            <label class="search-box compact"><span>关键词</span><input id="industrySearch" type="search" placeholder="钢铁、水泥、制药、印刷"></label>
+            <div id="industryStats" class="stat-list"></div>
+          </section>
+          <section class="panel span-2">
+            <div class="section-head">
+              <div><h2>行业场景库</h2><p>按行业查看适用标准、污染物和治理措施。</p></div>
+            </div>
+            <div id="industryCards" class="card-grid"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-paths">
+        <div class="page-layout">
+          <section class="panel">
+            <h2>路径查询</h2>
+            <label class="search-box compact"><span>起点实体</span><select id="pathStart" class="select-input"></select></label>
+            <label class="search-box compact"><span>终点实体</span><select id="pathEnd" class="select-input"></select></label>
+            <button class="text-button full" id="runPathQuery">查询最短路径</button>
+            <button class="text-button full ghost" id="showPathInGraph">在图谱中查看</button>
+          </section>
+          <section class="panel span-2">
+            <div class="section-head">
+              <div><h2>路径结果</h2><p>用于展示法规标准与业务对象之间的多跳联系。</p></div>
+            </div>
+            <div id="pathResult" class="path-result"></div>
+          </section>
+        </div>
+      </section>
+
+      <section class="page" id="page-quality">
+        <div class="dashboard-grid">
+          <section class="panel span-2">
+            <h2>来源覆盖</h2>
+            <div id="sourceQuality" class="quality-grid"></div>
+          </section>
+          <section class="panel">
+            <h2>年份分布</h2>
+            <div id="yearChart" class="bar-list"></div>
+          </section>
+          <section class="panel span-3">
+            <h2>数据维护清单</h2>
+            <div id="maintenanceList" class="table-wrap"></div>
+          </section>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="assets/graph-data.js"></script>
+  <script src="assets/expanded-data.js"></script>
+  <script src="assets/app-v2.js"></script>
+</body>
+</html>
